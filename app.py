@@ -28,7 +28,7 @@ VALID_USERNAME = "admin"
 VALID_PASSWORD = "secret"
 SECRET = "JBSWY3DPEHPK3PXP"  # In production, generate/store one per user
 
-st.title("🔐 Secure Login with 2FA")
+#st.title("🔐 Secure Login with 2FA")
 
 username = st.text_input("Username")
 password = st.text_input("Password", type="password")
