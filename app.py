@@ -9,7 +9,7 @@ st.markdown(
     """
     <style>
         .stApp {
-            background-color: #D9C9BE;
+            background-color: #253342;
         }
         .logo {
             display: flex;
