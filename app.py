@@ -3,10 +3,8 @@ import pyotp
 import qrcode
 from io import BytesIO
 
-# --- Streamlit page config ---
 st.set_page_config(page_title="Secure Login", layout="centered")
 
-# --- Set background and center elements ---
 st.markdown(
     """
     <style>
@@ -18,35 +16,20 @@ st.markdown(
             justify-content: center;
             margin-bottom: 20px;
         }
-        .centered {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .stTextInput > div > div > input {
-            text-align: center;
-        }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# --- Display logo ---
 logo_url = "https://raw.githubusercontent.com/myrnadinorah/double_authenticator/main/logi.png"
-st.markdown(f'<div class="logo"><img src="{logo_url}" width="200"></div>', unsafe_allow_html=True)
+st.markdown(f'<div class="logo"><img src="{logo_url}" width="600"></div>', unsafe_allow_html=True)
 
-# --- Start centered content ---
-st.markdown('<div class="centered">', unsafe_allow_html=True)
-
-# --- Static user data ---
 VALID_USERNAME = "admin"
 VALID_PASSWORD = "secret"
 SECRET = "JBSWY3DPEHPK3PXP"  # In production, generate/store one per user
 
-# --- Title ---
 st.title("🔐 Secure Login with 2FA")
 
-# --- Step 1: Login ---
 username = st.text_input("Username")
 password = st.text_input("Password", type="password")
 
@@ -58,7 +41,6 @@ if st.button("Login"):
         st.session_state["authenticated"] = False
         st.error("❌ Invalid credentials")
 
-# --- Step 2: Two-Factor Authentication ---
 if st.session_state.get("authenticated"):
     totp = pyotp.TOTP(SECRET)
 
@@ -77,6 +59,4 @@ if st.session_state.get("authenticated"):
         else:
             st.error("❌ Invalid 2FA code")
 
-# --- End centered content ---
-st.markdown('</div>', unsafe_allow_html=True)
 
