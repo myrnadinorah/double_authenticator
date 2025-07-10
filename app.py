@@ -11,7 +11,7 @@ st.markdown(
     """
     <style>
         .stApp {
-            background-color: white;
+            background-color: black;
         }
         .logo {
             display: flex;
@@ -33,7 +33,7 @@ VALID_USERNAME = "admin"
 VALID_PASSWORD = "secret"
 SECRET = "JBSWY3DPEHPK3PXP"  # In production, generate one per user
 
-st.title("🔐 Secure Login with 2FA")
+#st.title("🔐 Secure Login with 2FA")
 
 # --- Step 1: Login ---
 username = st.text_input("Username")
