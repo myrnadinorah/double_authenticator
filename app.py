@@ -18,10 +18,19 @@ st.markdown(
             justify-content: center;
             margin-bottom: 20px;
         }
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .stTextInput > div > div > input {
+            text-align: center;
+        }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 # --- Display logo ---
 logo_url = "https://raw.githubusercontent.com/myrnadinorah/double_authenticator/main/logi.png"
