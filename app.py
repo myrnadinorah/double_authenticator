@@ -24,7 +24,7 @@ st.markdown(
 )
 
 # --- Display logo ---
-logo_url = "https://raw.githubusercontent.com/myrnadinorah/double_authenticator/main/logo.png"
+logo_url = "https://raw.githubusercontent.com/myrnadinorah/double_authenticator/main/logi.png"
 #https://github.com/myrnadinorah/double_authenticator/blob/main/logo
 st.markdown(f'<div class="logo"><img src="{logo_url}" width="200"></div>', unsafe_allow_html=True)
 
