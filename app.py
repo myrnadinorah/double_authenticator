@@ -3,12 +3,34 @@ import pyotp
 import qrcode
 from io import BytesIO
 
+# --- Streamlit page config ---
 st.set_page_config(page_title="Secure Login", layout="centered")
+
+# --- Set white background ---
+st.markdown(
+    """
+    <style>
+        .stApp {
+            background-color: white;
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# --- Display logo ---
+logo_url = "https://github.com/myrnadinorah/double_authenticator/raw/main/logo/logo.avif"
+st.markdown(f'<div class="logo"><img src="{logo_url}" width="200"></div>', unsafe_allow_html=True)
 
 # --- Static user data (for demo) ---
 VALID_USERNAME = "admin"
 VALID_PASSWORD = "secret"
-SECRET = "JBSWY3DPEHPK3PXP"  # You would store one per user in real apps
+SECRET = "JBSWY3DPEHPK3PXP"  # In production, generate one per user
 
 st.title("🔐 Secure Login with 2FA")
 
@@ -28,7 +50,7 @@ if st.button("Login"):
 if st.session_state.get("authenticated"):
     totp = pyotp.TOTP(SECRET)
 
-    # Generate and show QR code only on first login
+    # Generate and show QR code
     st.write("Scan this QR code in your Google Authenticator app:")
     uri = totp.provisioning_uri(name=username, issuer_name="StreamlitApp")
     qr = qrcode.make(uri)
@@ -43,3 +65,4 @@ if st.session_state.get("authenticated"):
             st.success("🎉 Login successful!")
         else:
             st.error("❌ Invalid 2FA code")
+
